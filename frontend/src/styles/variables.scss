@@ -1,0 +1,24 @@
+// sidebar 浅蓝色主题
+$menuText: #4c5a67;              // 普通菜单文字（深灰偏蓝）
+$menuActiveText: #2d8cf0;        // 选中菜单文字（亮蓝）
+$subMenuActiveText: #2d8cf0;     // 子菜单激活背景（很浅的蓝）
+
+$menuBg: #ecf5ff;                // 菜单背景色（浅浅蓝）
+$menuHover: #d0e2ff;             // 菜单悬浮时背景色（稍深一点蓝）
+
+$subMenuBg: #f0f7ff;             // 子菜单背景色（更浅一点蓝）
+$subMenuHover: #cfe0ff;          // 子菜单悬浮背景色（轻微加深蓝）
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}
