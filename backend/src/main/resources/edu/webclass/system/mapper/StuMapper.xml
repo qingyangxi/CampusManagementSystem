@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.webclass.system.mapper.StuMapper">
+    <!--更新员工-->
+    <update id="update">
+        update student
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="stuId != null and stuId != ''">
+                stu_id = #{stuId},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="telephone != null and telephone != ''">
+                telephone = #{telephone},
+            </if>
+            <if test="education != null">
+                education = #{education},
+            </if>
+            <if test="classId != null">
+                class_id = #{classId},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--批量删除员工 (1, 2, 3)-->
+    <delete id="delete">
+        delete
+        from student
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--条件查询-->
+    <select id="list" resultType="edu.webclass.system.pojo.Stu">
+        select *
+        from student
+        <where>
+          <if test="name != null and name != ''">
+              name like concat('%', #{name}, '%')
+          </if>
+          <if test="stuId != null and stuId != ''">
+              and stu_id like concat('%', #{stuId}, '%')
+          </if>
+          <if test="education != null">
+              and education = #{education}
+          </if>
+            <if test="classId != null">
+                and class_id = #{classId}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <update id="dealP">
+        update student
+        set indiscipline_time = indiscipline_time + 1, indiscipline_points = indiscipline_points + #{score}, update_time = current_timestamp
+        where id = #{id}
+    </update>
+</mapper>

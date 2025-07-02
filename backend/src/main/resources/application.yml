@@ -1,0 +1,28 @@
+spring:
+  #数据库连接信息
+  # TODO: Replace the following url & username & password with your actual values
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/websystem
+    username: root
+    password: 1234
+  #文件上传的配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+#Mybatis配置
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+#阿里云OSS
+aliyun:
+  oss:
+    # TODO: Replace the following placeholders with your actual values
+    endpoint: replace with your endpoint
+    accessKeyId: replace with your access key id
+    accessKeySecret: replace with your access key secret
+    bucketName: replace with your bucket name
+    
